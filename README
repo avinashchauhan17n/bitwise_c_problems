@@ -1,0 +1,151 @@
+Uses of Bitwise Operations or Why to Study Bits?
+-----------------------------------------------
+Compression: Occasionally, you may want to implement a large number of Boolean variables, without using a lot of space. 
+A 32-bit int can be used to store 32 Boolean variables. Normally, the minimum size for one Boolean
+variable is one byte. All types in C must have sizes that are multiples of bytes.
+However, only one bit is necessary to represent a Boolean value.
+
+What purpose do the bitwise and, or, xor and the shift operators serve?
+----------------------------------------------------------------------
+Operator 			Meaning
+------------------------------------------------------------------------
+|  (Bitwise OR) 	 	Use to Set a Bit of a Register.
+&  (Bitwise AND)		Use to check a Bit of Register.
+^  (Bitwise EX-OR) 		Use to toggle a Bit of a Register.
+~  (Bitwise complement) 	Use for the compliment.
+<< (Shift left)			Use to shift a sequence of Bit toward left.
+>> (Shift right) 		Use to shift a sequence of Bit toward Right
+
+The AND operator
+---------------
+Truth Table
+-----------
+0 AND 0 = 0
+0 AND 1 = 0
+1 AND 0 = 0
+1 AND 1 = 1
+
+x AND 0 = 0
+x AND 1 = x
+
+We use bitwise "and" to test if certain bit(s) are one or not. And'ing a value against a pattern with ones only in the bit positions you are
+interested in will give zero if none of them are on, nonzero if one or more is on. We can also use bitwise "and" to turn off (set to zero) any
+desired bit(s). If you "and" a pattern against a variable, bit positions in the pattern that are ones will leave the target bit unchanged, and bit
+positions in the pattern that are zeros will set the target bit to zero.
+
+The OR operator
+--------------
+Truth Table
+-----------
+0 OR 0 = 0
+0 OR 1 = 1
+1 OR 0 = 1
+1 OR 1 = 1
+
+x OR 0 = x
+x OR 1 = 1
+Use bitwise "or" to turn on (set to one) desired bit(s).
+
+The XOR operator
+-----------------
+0 XOR 0 = 0
+0 XOR 1 = 1
+1 XOR 0 = 1
+1 XOR 1 = 0
+
+x XOR 0 = x
+x XOR 1 = ~x
+
+Use bitwise "exclusive or" to flip or reverse the setting of desired bit(s) (make it a one if it was zero or make it zero if it was one).
+The >>, <<, >>=, <<= operators
+
+* Every Left Shift operator is Multiply by 2 times.
+* Every Right Shift operator is Divison by 2 times.
+
+Operators >> and << can be used to shift the bits of an operand to the right or left a desired number of positions. The number of positions
+to be shifted can be specified as a constant, in a variable or as an expression. Bits shifted out are lost. For left shifts, bit positions vacated by
+shifting always filled with zeros. For right shifts, bit positions vacated by shifting filled with zeros for unsigned data type and with copy of the
+highest (sign) bit for signed data type. The right shift operator can be used to achieve quick multiplication by a power of 2. Similarly the right
+shift operator can be used to do a quick division by power of 2 (unsigned types only). The operators >> and <<, dont change the operand
+at all. However, the operators >>= and <=< also change the operand after doing the shift operations.
+x << y - Gives value x shifted left y bits (Bits positions vacated by shift are filled with zeros).
+x <<= y - Shifts variable x left y bits (Bits positions vacated by shift are filled with zeros).
+A left shift of n bits multiplies by 2 raise to n.
+
+
+Check if the 13th bit of a 32 bit integer is on or off?
+-------------------------------------------------------
+AND it with x00001000 and check if its equal to x00001000
+if((num & x00001000)==x00001000)
+
+
+x >> y - Gives value x shifted right y bits.
+x >>= y - Shifts variable x right y bits.
+
+
+For the right shift, All bits of operand participate in the shift. For unsigned data type,
+bits positions vacated by shift are filled with zeros. For signed data type, bits positions
+vacated by shift are filled with the original highest bit (sign bit). Right shifting n bits
+divides by 2 raise to n. Shifting signed values may fail because for negative values the result never
+gets past -1:
+-5 >> 3 is -1 and not 0 like -5/8.
+
+How to reverse the bits in an interger?
+--------------------------------------
+flip bits:
+--------
+0101
+1111
+
+1010
+
+How to reverse the odd bits of an integer?
+-----------------------------------------
+XOR each of its 4 hex parts with 0101.
+
+
+Bitwise Operators Assignments:
+-----------------------------
+1. Write a Macro's Set,clear and toggle n'th bit using bit wise operator?
+2. WAP implement subtraction functionality with out using SUB('-') Operator.    
+3. WAP implement addition functionality with out using ADD('+') Operator.   
+4. WAP implement XOR functionality with out using XOR(^) operator.
+5. WAP to implement the sizeof operation using bitwise operator.  
+6. WAP to convert Little endian integer to Big endian integer 
+7. WAP multiply a number by 9 using bit shift.
+8. WAP whether a number is ODD or EVEN using bitwise.
+9. WAP whether a number is power of 2 or not?
+10. WAP print binary?
+
+11.WAP to count the bits set (bit value 1 ) in an integer? Find out and compare different possibilities?
+
+12. WAP print reverse of interger number? 
+13 .WAP Check if the 20th bit of a 32 bit integer is on or off?
+
+14.Write a functionsetbits(x,p,n,y)that returns x with then bits that begin at position p set to the rightmost n bits of y, leaving the other bits unchanged.
+
+e.g. if x = 10101010 (170 decimal) and y = 10100111 (167 decimal) and n = 3 and p = 6 then
+you need to strip off 3 bits of y (111) and put them in x at position 10xxx010 to get answer
+10111010. Your answer should print out the result in binary form although input can be in
+decimal form.
+Your output should be like this:
+x = 10101010 (binary)
+y = 10100111 (binary)
+setbits n = 3, p = 6 gives x = 10111010 (binary).
+
+13. WAP Swap any two numbers using bitwise operators. How it works?
+
+
+
+x = x ^ y;
+
+
+y = x ^ y = (x ^ y) ^ y = x ^ (y ^ y) = x ^ 0 = x;
+
+
+x = x ^ y = x ^ (x ^ y) = (x ^ x) ^ y; 0 ^ y ; y;   
+
+Associative Law
+
+
+
